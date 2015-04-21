@@ -27,7 +27,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="elideMode">
      <enum>Qt::ElideNone</enum>
@@ -55,7 +55,7 @@
      <attribute name="title">
       <string>System Info</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -79,7 +79,7 @@
          <property name="title">
           <string>System:</string>
          </property>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>70</x>
@@ -150,16 +150,6 @@
            </item>
           </layout>
          </widget>
-         <zorder>labelCompName</zorder>
-         <zorder>groupBoxHardware</zorder>
-         <zorder>groupBoxHardware</zorder>
-         <zorder>groupBoxSoft</zorder>
-         <zorder>labelSysManufacturer</zorder>
-         <zorder>labelModel</zorder>
-         <zorder>labelSysManyfacturerInfo</zorder>
-         <zorder>labelCompNameInfo</zorder>
-         <zorder>labelModelInfo</zorder>
-         <zorder>groupBoxHardware</zorder>
         </widget>
        </item>
        <item>
@@ -170,82 +160,87 @@
          <widget class="QWidget" name="">
           <property name="geometry">
            <rect>
-            <x>70</x>
+            <x>180</x>
             <y>30</y>
-            <width>341</width>
-            <height>81</height>
+            <width>351</width>
+            <height>77</height>
            </rect>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <property name="spacing">
-              <number>15</number>
+            <widget class="QLabel" name="labelProcInfo">
+             <property name="text">
+              <string>TextLabel</string>
              </property>
-             <item>
-              <widget class="QLabel" name="labelProcessor">
-               <property name="text">
-                <string>Processor:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="labelRAM">
-               <property name="text">
-                <string>RAM:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="labelSysType">
-               <property name="text">
-                <string>System Type:</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+            </widget>
            </item>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_4">
-             <property name="spacing">
-              <number>15</number>
+            <widget class="QLabel" name="labelRAMInfo">
+             <property name="text">
+              <string>TextLabel</string>
              </property>
-             <property name="leftMargin">
-              <number>10</number>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
              </property>
-             <item>
-              <widget class="QLabel" name="labelProcInfo">
-               <property name="text">
-                <string>TextLabel</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="labelRAMInfo">
-               <property name="text">
-                <string>TextLabel</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="labelSysTypeInfo">
-               <property name="text">
-                <string>TextLabel</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelSysTypeInfo">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
-         <zorder>labelProcessor</zorder>
-         <zorder>labelRAM</zorder>
-         <zorder>labelSysType</zorder>
-         <zorder>groupBoxSoft</zorder>
-         <zorder>labelProcInfo</zorder>
-         <zorder>labelRAMInfo</zorder>
-         <zorder>labelSysTypeInfo</zorder>
-         <zorder>groupBoxSys</zorder>
+         <widget class="QWidget" name="">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>30</y>
+            <width>94</width>
+            <height>77</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="labelProcessor">
+             <property name="text">
+              <string>Processor:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelRAM">
+             <property name="text">
+              <string>RAM:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelSysType">
+             <property name="text">
+              <string>System Type:</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
        <item>
@@ -253,7 +248,7 @@
          <property name="title">
           <string>Software:</string>
          </property>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>70</x>
@@ -304,12 +299,18 @@
                <property name="text">
                 <string>TextLabel</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="labelOSManufacturerInfo">
                <property name="text">
                 <string>TextLabel</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                </property>
               </widget>
              </item>
@@ -318,19 +319,15 @@
                <property name="text">
                 <string>TextLabel</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+               </property>
               </widget>
              </item>
             </layout>
            </item>
           </layout>
          </widget>
-         <zorder>groupBoxHardware</zorder>
-         <zorder>labelOSName</zorder>
-         <zorder>labelOsVersion</zorder>
-         <zorder>labelOSManufacturer</zorder>
-         <zorder>labelOSNameInfo</zorder>
-         <zorder>labelOSManufacturerInfo</zorder>
-         <zorder>labelOSVersionInfo</zorder>
         </widget>
        </item>
       </layout>
@@ -384,7 +381,7 @@
      <attribute name="title">
       <string>Resourses</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -484,12 +481,23 @@
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
+      <property name="columnCount">
+       <number>5</number>
+      </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
       <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>170</number>
+       <number>133</number>
       </attribute>
       <column>
        <property name="text">
         <string>Devise</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Direction</string>
        </property>
       </column>
       <column>
@@ -510,7 +518,7 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -521,7 +529,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3"/>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -532,7 +540,7 @@
     </property>
     <layout class="QGridLayout" name="gridLayout_5"/>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -543,7 +551,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_6"/>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
