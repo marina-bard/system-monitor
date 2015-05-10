@@ -7,6 +7,8 @@
 #include <QProcess>
 //#include "filesystemsinfo.h"
 
+#define MAX_SIZE    256
+
 namespace Ui {
 class MainWindow;
 }
@@ -14,17 +16,18 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
+private:
+    Ui::MainWindow *ui;
+    QList<struct fileSystem> systems;
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void setFileSysTab(QList<struct fileSystem> list);
     void setSysInfoTab(struct systemInfo info);
+    void setProcInfoTab(QList<struct procInfo> list);
+
 private slots:
    // void openDirection(QString path);
-private:
-    Ui::MainWindow *ui;
-    QList<struct fileSystem> systems;
 };
 
 #endif // MAINWINDOW_H

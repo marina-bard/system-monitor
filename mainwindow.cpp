@@ -10,11 +10,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->mainToolBar->hide();
     ui->tabMenu->setCurrentIndex(0);
-
-   // ui->centralWidget;
-    //ui->tableWidget->setShowGrid(true);
-   // for(int i = 0; i < 6; i++)
-     //   ui->tableWidget->setColumnHidden(i, false);
 }
 
 MainWindow::~MainWindow()
@@ -24,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow:: setFileSysTab(QList<struct fileSystem> systems)
 {
-    int i = 0, j = 1;
+    int i = 0;
     struct fileSystem info;
     QListIterator<struct fileSystem> iter(systems);
     iter.toFront();
@@ -37,22 +32,44 @@ void MainWindow:: setFileSysTab(QList<struct fileSystem> systems)
         ui->tableWidgetFileSys->setItem(i, 1, new QTableWidgetItem(info.dir));
         ui->tableWidgetFileSys->setItem(i, 2, new QTableWidgetItem(info.type));
 
-        QString temp = info.dir;
+     //   QString temp = info.dir;
      //   connect(ui->tableWidgetFileSys, SIGNAL(cellDoubleClicked(i,j)), this, SLOT(openDirection(temp)));
         i++;
     }
-    QProcess().startDetached("/");
+   // QProcess().startDetached("/");
+    return;
+}
+
+void MainWindow:: setProcInfoTab(QList<procInfo> processes)
+{
+    int i = 0;
+    struct procInfo info;
+    QListIterator<struct procInfo> iter(processes);
+    iter.toFront();
+
+    while(iter.hasNext())
+    {
+       info = iter.next();
+       ui->tableWidgetProcesses->insertRow(i);
+       ui->tableWidgetProcesses->setItem(i, 0, new QTableWidgetItem(info.name));
+       ui->tableWidgetProcesses->setItem(i, 1, new QTableWidgetItem(QString("%1").arg(info.cpuUsage)));
+       ui->tableWidgetProcesses->setItem(i, 2, new QTableWidgetItem(QString("%1").arg(info.memory)));
+       ui->tableWidgetProcesses->setItem(i, 3, new QTableWidgetItem(QString("%1").arg(info.pid)));
+       ui->tableWidgetProcesses->setItem(i, 4, new QTableWidgetItem(QString("%1").arg(info.ppid)));
+       ui->tableWidgetProcesses->setItem(i, 5, new QTableWidgetItem(info.status));
+       i++;
+    }
+
+    ui->tableWidgetProcesses->verticalHeader()->hide();
     return;
 }
 
 void MainWindow:: setSysInfoTab(struct systemInfo info)
 {
     ui->labelProcInfo->setText(info.proc);
-    ui->labelRAMInfo->setText(info.RAM);
+    char* temp = (char*)malloc(sizeof(char) * MAX_SIZE);
+    sprintf(temp, "%.2f Gb", info.RAM);
+    ui->labelRAMInfo->setText(temp);
     ui->labelOSNameInfo->setText(info.OSType);
     ui->labelOSVersionInfo->setText(info.OSVersion);
 }
-/*void openDirection(QString path)
-{
-    //start filebrowser
-}*/

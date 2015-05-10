@@ -17,7 +17,7 @@ void SystemInfo:: setStructInfo()
     info.proc = temp;
 
   //  temp = setRAMInfo();
-    info.RAM = temp;
+    //info.RAM = temp;
 }
 
 void SystemInfo:: setProcInfo()
@@ -39,29 +39,27 @@ void SystemInfo:: setProcInfo()
 
 void SystemInfo:: setRAMInfo()
 {
-    char *result;
-    char temp[MAX_SIZE];
-    char *values = "1234567890";
+    float ram;
 
     file = fopen(MEM_INFO, "r");
-    fgets(temp, MAX_SIZE, file);
-    result = strpbrk(temp, values);
-    info.RAM = result;
+    fscanf(file, "%*s %f", &ram);
+    ram /= MILLION;
+    info.RAM = ram;
     return;
 }
 
 void SystemInfo:: setOSTypeInfo()
 {
-    char result[MAX_SIZE];
+    char* result = (char*)malloc(sizeof(char) * MAX_SIZE);
 
     file = fopen(OS_TYPE, "r");
-    fgets(result, MAX_SIZE, file);
+    fscanf(file, "%s", result);
     info.OSType = result;
 }
 
 void SystemInfo:: setOSVersionInfo()
 {
-    char result[MAX_SIZE];
+     char* result = (char*)malloc(sizeof(char) * MAX_SIZE);
 
     file = fopen(OS_RELEASE, "r");
     fgets(result, MAX_SIZE, file);

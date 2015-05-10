@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     filesystemsinfo.cpp \
-    systeminfo.cpp
+    systeminfo.cpp \
+    processinfo.cpp
 
 HEADERS  += mainwindow.h \
     filesystemsinfo.h \
     systeminfo.h \
-    structures.h
+    structures.h \
+    processinfo.h
 
 FORMS    += mainwindow.ui

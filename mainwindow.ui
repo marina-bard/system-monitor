@@ -27,7 +27,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="elideMode">
      <enum>Qt::ElideNone</enum>
@@ -157,7 +157,7 @@
          <property name="title">
           <string>Hardware:</string>
          </property>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>180</x>
@@ -205,7 +205,7 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>70</x>
@@ -353,16 +353,16 @@
        <bool>true</bool>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>170</number>
+       <number>110</number>
       </attribute>
       <column>
        <property name="text">
-        <string>Process Name</string>
+        <string>Name</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>User Name</string>
+        <string>CPU %</string>
        </property>
       </column>
       <column>
@@ -372,7 +372,17 @@
       </column>
       <column>
        <property name="text">
-        <string>CPU %</string>
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Parent's ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Status</string>
        </property>
       </column>
      </widget>
