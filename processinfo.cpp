@@ -2,7 +2,6 @@
 #include "structures.h"
 
 
-
 ProcessInfo::ProcessInfo()
 {
 
@@ -50,11 +49,19 @@ struct procInfo ProcessInfo :: setProcInfoStruct(FILE *stat)
 {
     char status;
     struct procInfo info;
+    size_t vTemp;
+    size_t rssTemp;
+
     info.name = (char*)malloc(sizeof(char) * MAX_SIZE);
-    fscanf(stat, "%d %s %c %d %*d %*d %*d %*u %*u %*lu %*lu %*lu %*lu %*lu %*lu %*ld %*ld %*ld %*ld %*ld %*ld %*llu %lu",
-           &(info.pid), info.name, &status, &(info.ppid), &(info.memory));
+
+    fscanf(stat, "%d %s %c %d %*d %*d %*d %*u %*u %*lu %*lu %*lu %*lu %*lu %*lu %*ld %*ld %*ld %*ld %*ld %*ld %*llu %lu %ld",
+           &(info.pid), info.name, &status, &(info.ppid), &vTemp, &rssTemp);
 
     info.name = changeNameFormat(info.name);
+
+    info.memory = changeMemoryFormat(vTemp);
+    info.rss = changeRSSFormat(rssTemp);
+
     info.cpuUsage = 0;
     // to do calculation of cpu usage
 
@@ -84,9 +91,6 @@ struct procInfo ProcessInfo :: setProcInfoStruct(FILE *stat)
     case 'x':
         info.status = "Dead";
         break;
-    case 'K':
-        info.status = "Wakekill";
-        break;
     case 'W':
         info.status = "Waking";
         break;
@@ -104,8 +108,24 @@ char* ProcessInfo :: changeNameFormat(char* string)
 {
     int i = 0;
     int length = strlen(string);
-    for(int j = 1; i < length - 2; i++, j++)
+    for(int j = 1; j < length; i++, j++)
+    {
+        if(string[j] == ')')
+            break;
         string[i] = string[j];
+    }
     string[i] = '\0';
     return string;
+}
+
+double ProcessInfo :: changeMemoryFormat(size_t memSize)
+{
+    double temp;
+    temp = memSize;
+    return (temp / DIVIDER);
+}
+
+double ProcessInfo :: changeRSSFormat(size_t rss)
+{
+    return (rss * PAGE / DIVIDER);
 }

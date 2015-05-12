@@ -27,6 +27,8 @@ public:
     struct procInfo setProcInfoStruct(FILE *stat);
     QList <struct procInfo> getProcInfoList();
     char* changeNameFormat(char* string);
+    double changeMemoryFormat(size_t memSize);
+    double changeRSSFormat(size_t rss);
 };
 
 #endif // PROCESSINFO_H

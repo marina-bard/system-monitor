@@ -11,7 +11,6 @@
 #define OS_RELEASE "/proc/sys/kernel/osrelease"
 #define MAX_SIZE 256
 #define MODEL_NAME  "model name"
-#define MILLION 1000000
 
 class SystemInfo
 {

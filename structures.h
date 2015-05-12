@@ -4,6 +4,9 @@
 #endif // FYLESYSTEMSTRUCT
 #include <sys/types.h>
 
+#define DIVIDER 1048576
+#define PAGE    4096
+
 struct fileSystem
 {
     QString fsname;
@@ -27,7 +30,8 @@ struct procInfo
     pid_t ppid;
 
     int cpuUsage;
-    size_t memory;
+    double memory;
+    double rss;
 
     QString status;
     char* name;

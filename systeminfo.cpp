@@ -43,7 +43,7 @@ void SystemInfo:: setRAMInfo()
 
     file = fopen(MEM_INFO, "r");
     fscanf(file, "%*s %f", &ram);
-    ram /= MILLION;
+    ram /= DIVIDER;
     info.RAM = ram;
     return;
 }

@@ -353,7 +353,7 @@
        <bool>true</bool>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>110</number>
+       <number>95</number>
       </attribute>
       <column>
        <property name="text">
@@ -367,7 +367,12 @@
       </column>
       <column>
        <property name="text">
-        <string>Memory</string>
+        <string>Virtual Memory</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>RSS</string>
        </property>
       </column>
       <column>

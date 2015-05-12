@@ -50,13 +50,21 @@ void MainWindow:: setProcInfoTab(QList<procInfo> processes)
     while(iter.hasNext())
     {
        info = iter.next();
+
+       char* vMem = (char*)malloc(sizeof(char) * MAX_SIZE);
+       sprintf(vMem, "%.3f Mib", info.memory);
+
+       char* rss = (char*)malloc(sizeof(char) * MAX_SIZE);
+       sprintf(rss, "%.3f Mib", info.rss);
+
        ui->tableWidgetProcesses->insertRow(i);
        ui->tableWidgetProcesses->setItem(i, 0, new QTableWidgetItem(info.name));
        ui->tableWidgetProcesses->setItem(i, 1, new QTableWidgetItem(QString("%1").arg(info.cpuUsage)));
-       ui->tableWidgetProcesses->setItem(i, 2, new QTableWidgetItem(QString("%1").arg(info.memory)));
-       ui->tableWidgetProcesses->setItem(i, 3, new QTableWidgetItem(QString("%1").arg(info.pid)));
-       ui->tableWidgetProcesses->setItem(i, 4, new QTableWidgetItem(QString("%1").arg(info.ppid)));
-       ui->tableWidgetProcesses->setItem(i, 5, new QTableWidgetItem(info.status));
+       ui->tableWidgetProcesses->setItem(i, 2, new QTableWidgetItem(vMem));
+       ui->tableWidgetProcesses->setItem(i, 3, new QTableWidgetItem(rss));
+       ui->tableWidgetProcesses->setItem(i, 4, new QTableWidgetItem(QString("%1").arg(info.pid)));
+       ui->tableWidgetProcesses->setItem(i, 5, new QTableWidgetItem(QString("%1").arg(info.ppid)));
+       ui->tableWidgetProcesses->setItem(i, 6, new QTableWidgetItem(info.status));
        i++;
     }
 
@@ -66,9 +74,10 @@ void MainWindow:: setProcInfoTab(QList<procInfo> processes)
 
 void MainWindow:: setSysInfoTab(struct systemInfo info)
 {
-    ui->labelProcInfo->setText(info.proc);
     char* temp = (char*)malloc(sizeof(char) * MAX_SIZE);
     sprintf(temp, "%.2f Gb", info.RAM);
+
+    ui->labelProcInfo->setText(info.proc);
     ui->labelRAMInfo->setText(temp);
     ui->labelOSNameInfo->setText(info.OSType);
     ui->labelOSVersionInfo->setText(info.OSVersion);
