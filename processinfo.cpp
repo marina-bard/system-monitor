@@ -1,6 +1,4 @@
 #include "processinfo.h"
-#include "structures.h"
-
 
 ProcessInfo::ProcessInfo()
 {
@@ -24,6 +22,9 @@ int ProcessInfo :: setMaxPid()
 
 void ProcessInfo :: setProcInfoList()
 {
+    if(!processes.empty())
+        processes.clear();
+
     maxPid = setMaxPid();
 
     FILE *statFile;
@@ -42,6 +43,8 @@ void ProcessInfo :: setProcInfoList()
         }
         procDir[6] = '\0';
     }
+
+   // delete procDir;
     return;
 }
 
@@ -127,5 +130,7 @@ double ProcessInfo :: changeMemoryFormat(size_t memSize)
 
 double ProcessInfo :: changeRSSFormat(size_t rss)
 {
-    return (rss * PAGE / DIVIDER);
+    double temp = rss;
+    return (temp * PAGE / DIVIDER);
 }
+

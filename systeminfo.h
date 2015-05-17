@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <QString>
-#include "structures.h"
+#include "systeminfostruct.h"
 
 #define CPU_INFO "/proc/cpuinfo"
 #define MEM_INFO "/proc/meminfo"
@@ -11,6 +11,8 @@
 #define OS_RELEASE "/proc/sys/kernel/osrelease"
 #define MAX_SIZE 256
 #define MODEL_NAME  "model name"
+#define DIVIDER 1048576
+
 
 class SystemInfo
 {

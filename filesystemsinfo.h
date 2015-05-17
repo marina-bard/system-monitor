@@ -8,7 +8,7 @@
 #include <QList>
 #include <QListIterator>
 #include <QString>
-//#include <filesystemstruct.h>
+#include "filesystem.h"
 
 
 #define MTAB   "/etc/mtab"

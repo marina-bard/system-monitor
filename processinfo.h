@@ -6,12 +6,16 @@
 #include <stdlib.h>
 #include <QString>
 #include <QList>
+#include "procinfo.h"
 
+#define DIVIDER 1048576
+#define PAGE    4096
 
 #define PID_MAX "/proc/sys/kernel/pid_max"
 #define PROC    "/proc/"
 #define STAT    "/stat"
 #define MAX_SIZE 256
+
 
 class ProcessInfo
 {

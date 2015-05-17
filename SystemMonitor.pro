@@ -16,12 +16,18 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     filesystemsinfo.cpp \
     systeminfo.cpp \
-    processinfo.cpp
+    processinfo.cpp \
+    processmonitoring.cpp \
+    filesystemsmonitoring.cpp
 
 HEADERS  += mainwindow.h \
     filesystemsinfo.h \
     systeminfo.h \
-    structures.h \
-    processinfo.h
+    processinfo.h \
+    processmonitoring.h \
+    procinfo.h \
+    filesystem.h \
+    systeminfostruct.h \
+    filesystemsmonitoring.h
 
 FORMS    += mainwindow.ui
